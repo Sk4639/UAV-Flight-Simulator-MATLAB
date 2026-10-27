@@ -1,38 +1,20 @@
-# Interactive UAV Flight Simulator GUI (MATLAB)
+# Saikiran Hamilpur — Aerospace Engineering Portfolio
 
-## What this is
-An interactive 2D UAV waypoint-navigation and obstacle-avoidance demonstration with a GUI, Start/Pause/Reset controls, speed slider, animated UAV marker, and simulation metrics.
+A responsive static portfolio website for GitHub Pages. The page includes a featured MATLAB UAV simulator project and a screenshot preview.
 
-## Requirements
-MATLAB with `uifigure`, `uiaxes`, and `timer` support (recent MATLAB versions recommended). No specialist aerospace toolbox is intended to be required.
+## Publish this website on GitHub Pages
 
-## Run
-1. Extract the ZIP.
-2. Open MATLAB and set Current Folder to this directory.
-3. Run:
-   ```matlab
-   uav_flight_simulator_gui
-   ```
+1. Download and extract this ZIP.
+2. Open your repository: https://github.com/Sk4639/UAV-Flight-Simulator-MATLAB
+3. Upload `index.html`, `README.md`, and the `screenshots` folder to the repository root. Keep the existing MATLAB source file.
+4. Commit the changes.
+5. Open **Settings → Pages**. Under **Build and deployment**, select **Deploy from a branch**, select branch `main` and folder `/(root)`, then select **Save**.
+6. When GitHub displays the published URL, open it to verify the website before using it in an application.
 
-## GUI controls
-- **Start Simulation:** animate the UAV along the computed route.
-- **Pause Simulation:** pause animation.
-- **Reset Simulation:** return the UAV to the start.
-- **Simulation speed:** adjust animation pacing.
+Expected project Pages URL (not guaranteed until published):
+`https://sk4639.github.io/UAV-Flight-Simulator-MATLAB/`
 
-## Metrics
-- Planned path length
-- Number of path steps
-- Minimum distance from the path to obstacle boundaries
-- Whether the computed endpoint meets the goal tolerance
-
-## Important limitations
-This is a simplified 2D educational demo using a potential-field steering method. Such methods can become trapped in local minima, and the code does not model aircraft dynamics, wind, sensor uncertainty, or certified safety logic. It is not intended to control a real UAV. Review behavior and metrics in MATLAB before presenting results.
-
-
-## Simulation Preview
-
-![Interactive UAV Flight Simulator](uav-simulator.png)
-
-The MATLAB GUI demonstrates waypoint navigation, obstacle visualization, safety margins, flight-path display, and interactive simulation controls.
-
+## Before submitting to an employer
+- Verify contact details, education and experience against your final CV.
+- Confirm all claims about the MATLAB project are accurate.
+- This is an educational simulation, not a validated real-world flight system.
