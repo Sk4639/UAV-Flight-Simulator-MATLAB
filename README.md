@@ -28,3 +28,11 @@ MATLAB with `uifigure`, `uiaxes`, and `timer` support (recent MATLAB versions re
 
 ## Important limitations
 This is a simplified 2D educational demo using a potential-field steering method. Such methods can become trapped in local minima, and the code does not model aircraft dynamics, wind, sensor uncertainty, or certified safety logic. It is not intended to control a real UAV. Review behavior and metrics in MATLAB before presenting results.
+
+
+## Simulation Preview
+
+![Interactive UAV Flight Simulator](uav-simulator.png)
+
+The MATLAB GUI demonstrates waypoint navigation, obstacle visualization, safety margins, flight-path display, and interactive simulation controls.
+
