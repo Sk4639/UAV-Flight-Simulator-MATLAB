@@ -9,9 +9,41 @@
 :root{--bg:#0b1220;--panel:#111c2e;--text:#eef4ff;--muted:#a9b8cc;--accent:#ff8b3d;--line:#26364d}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}a{color:#ffb078}a:hover{color:#fff}header{border-bottom:1px solid var(--line);position:sticky;top:0;background:#0b1220ed;backdrop-filter:blur(10px);z-index:3}.nav{max-width:1100px;margin:auto;padding:14px 22px;display:flex;justify-content:space-between;gap:18px;align-items:center}.brand{font-weight:800;letter-spacing:.3px}.nav a{text-decoration:none;margin-left:16px;color:var(--muted);font-size:.95rem}.wrap{max-width:1100px;margin:auto;padding:0 22px}.hero{padding:82px 0 66px;display:grid;grid-template-columns:1.6fr 1fr;gap:40px;align-items:center}.eyebrow{color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:.78rem}h1{font-size:clamp(2.4rem,6vw,4.6rem);line-height:1.05;letter-spacing:-2px;margin:14px 0 18px}.lead{font-size:1.12rem;color:var(--muted);max-width:680px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}.btn{display:inline-block;padding:11px 16px;border-radius:10px;border:1px solid var(--line);text-decoration:none;font-weight:700}.primary{background:var(--accent);color:#171717;border-color:var(--accent)}.profile-card,.card{background:linear-gradient(150deg,#14223a,#0f1929);border:1px solid var(--line);border-radius:18px;padding:24px}.profile-card h2{margin-top:0}.stat{border-top:1px solid var(--line);padding-top:12px;margin-top:12px;color:var(--muted)}section{padding:46px 0}h2.section-title{font-size:1.8rem;margin:0 0 8px} .sub{color:var(--muted);margin:0 0 24px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.card h3{margin:0 0 8px}.card p{color:var(--muted);margin-top:0}.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:15px}.tag{font-size:.8rem;border:1px solid var(--line);border-radius:999px;padding:4px 10px;color:#c7d6e9}.skills{display:flex;gap:10px;flex-wrap:wrap}.skill{background:var(--panel);border:1px solid var(--line);padding:9px 13px;border-radius:9px}.notice{border-left:3px solid var(--accent);padding:12px 16px;background:#101a2a;color:var(--muted);border-radius:0 10px 10px 0}.contact{display:flex;gap:14px;flex-wrap:wrap}footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:.9rem}
 @media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:54px}.grid{grid-template-columns:1fr}.nav{align-items:flex-start;flex-direction:column}.nav a{margin:0 14px 0 0}.profile-card{max-width:none}}
+
+/* Motion layer */
+body{overflow-x:hidden;isolation:isolate}
+.ambient{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden;background:radial-gradient(ellipse at 78% 18%,rgba(255,139,61,.10),transparent 30%),radial-gradient(ellipse at 12% 60%,rgba(66,139,255,.09),transparent 28%)}
+.ambient:before{content:"";position:absolute;inset:0;background-image:radial-gradient(1px 1px at 12% 18%,#fff9 99%,transparent),radial-gradient(1px 1px at 78% 32%,#fff8 99%,transparent),radial-gradient(2px 2px at 44% 72%,#ffb078a6 99%,transparent),radial-gradient(1px 1px at 91% 84%,#fff8 99%,transparent),radial-gradient(1px 1px at 23% 90%,#fff7 99%,transparent);background-size:390px 300px;animation:starDrift 32s linear infinite}
+.ambient:after{content:"";position:absolute;width:520px;height:520px;border:1px solid #ff8b3d19;border-radius:50%;right:-230px;top:120px;box-shadow:0 0 0 65px #ff8b3d09,0 0 0 130px #ff8b3d06;animation:orbitSlow 60s linear infinite}
+@keyframes starDrift{from{transform:translateY(0)}to{transform:translateY(-300px)}}
+@keyframes orbitSlow{to{transform:rotate(360deg)}}
+@keyframes riseIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes floatUp{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 #ff8b3d00}50%{box-shadow:0 0 25px 2px #ff8b3d24}}
+@keyframes scan{0%{transform:translateY(-120%);opacity:0}15%{opacity:.7}85%{opacity:.3}100%{transform:translateY(350%);opacity:0}}
+@keyframes dash{to{stroke-dashoffset:-240}}
+@keyframes blink{50%{opacity:0}}
+.hero .eyebrow,.hero h1,.hero .lead,.hero .actions{animation:riseIn .75s both;opacity:0}
+.hero .eyebrow{animation-delay:.08s}.hero h1{animation-delay:.2s}.hero .lead{animation-delay:.35s}.hero .actions{animation-delay:.48s}
+.profile-card{position:relative;overflow:hidden;animation:riseIn .9s .24s both,floatUp 6s 1.2s ease-in-out infinite;opacity:0}
+.profile-card:after{content:"";position:absolute;left:0;right:0;top:0;height:46%;background:linear-gradient(180deg,transparent,#ffb07809,transparent);animation:scan 7s ease-in-out infinite;pointer-events:none}
+.profile-card:before{content:"";position:absolute;width:190px;height:190px;border:1px solid #ffb07830;border-radius:50%;right:-78px;top:-70px;box-shadow:0 0 0 26px #ffb0780d,0 0 0 52px #ffb07808;animation:orbitSlow 24s linear infinite;pointer-events:none}
+.stat{transition:transform .25s ease,border-color .25s ease}.stat:hover{transform:translateX(5px);border-color:var(--accent)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}.reveal.is-visible{opacity:1;transform:translateY(0)}
+.card{position:relative;overflow:hidden;transition:transform .3s ease,border-color .3s ease,box-shadow .3s ease}.card:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 20%,#ffffff09 45%,transparent 70%);transform:translateX(-130%);transition:transform .7s ease;pointer-events:none}.card:hover{transform:translateY(-7px);border-color:#ff8b3d99;box-shadow:0 18px 45px #0004}.card:hover:before{transform:translateX(130%)}
+.card img{transition:transform .55s cubic-bezier(.2,.8,.2,1),filter .55s ease;filter:saturate(.9)}.card:hover img{transform:scale(1.025);filter:saturate(1.12)}
+.btn{transition:transform .2s ease,box-shadow .25s ease,background .25s ease}.btn:hover{transform:translateY(-3px);box-shadow:0 8px 25px #0005}.primary{animation:pulseGlow 4s ease-in-out infinite}.nav a{position:relative;transition:color .2s ease}.nav a:after{content:"";position:absolute;left:0;right:100%;bottom:-5px;height:2px;background:var(--accent);transition:right .25s ease}.nav a:hover:after{right:0}
+.skill,.tag{transition:transform .22s ease,border-color .22s ease,background .22s ease}.skill:hover,.tag:hover{transform:translateY(-3px);border-color:var(--accent);background:#1a2a41}
+.eyebrow:after{content:"";display:inline-block;width:7px;height:7px;background:var(--accent);border-radius:50%;margin-left:9px;box-shadow:0 0 12px #ff8b3d;animation:blink 1.4s steps(2,end) infinite}
+.flight-motif{height:54px;max-width:330px;margin-top:24px;position:relative;border-bottom:1px solid #ffb07830;overflow:hidden}.flight-motif .route{position:absolute;left:0;right:8px;top:24px;border-top:2px dashed #ff8b3d99;animation:dash 8s linear infinite}.flight-motif .blip{position:absolute;width:9px;height:9px;border-radius:50%;background:var(--accent);left:12%;top:20px;box-shadow:0 0 16px #ff8b3dcc;animation:routeBlip 5s ease-in-out infinite alternate}@keyframes routeBlip{from{left:8%}to{left:88%}}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media(max-width:760px){.ambient:after{width:360px;height:360px;right:-220px}.profile-card{animation:riseIn .9s .24s both}.nav nav{display:flex;flex-wrap:wrap;gap:7px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}.hero .eyebrow,.hero h1,.hero .lead,.hero .actions,.profile-card{opacity:1;animation:none}}
+
 </style>
 </head>
 <body>
+<div class="ambient" aria-hidden="true"></div>
 <header><div class="nav"><div class="brand">SAIKIRAN HAMILPUR <span style="color:var(--accent)">/ AEROSPACE</span></div><nav><a href="#about">About</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#contact">Contact</a></nav></div></header>
 <main>
 <div class="wrap">
@@ -27,42 +59,59 @@
 <p class="lead" style="font-size:1rem">Simulation · Flight dynamics · UAV navigation · Aerospace analysis</p>
 <div class="stat"><strong>Featured project</strong><br>Interactive UAV Flight Simulator GUI (MATLAB)</div>
 <div class="stat"><strong>Engineering approach</strong><br>Model, simulate, inspect, improve</div>
+<div class="flight-motif" aria-hidden="true"><span class="route"></span><span class="blip"></span></div>
 </aside>
 </section>
-<section id="projects">
+<section id="projects" class="reveal">
 <h2 class="section-title">Featured Project</h2><p class="sub">A practical simulation project focused on waypoint navigation and obstacle visualization.</p>
 <div class="grid">
-<article class="card">
+<article class="card reveal">
 <h3>Interactive UAV Flight Simulator GUI</h3>
 <p>A MATLAB graphical application demonstrating waypoint navigation, a start-to-goal route, obstacle visualization, safety margins, simulation controls, and basic path metrics.</p>
 <p><img src="screenshots/uav-simulator.png" alt="Screenshot of the MATLAB UAV flight simulator interface" style="width:100%;height:auto;border:1px solid var(--line);border-radius:12px;margin-top:10px"></p>
 <div class="tags"><span class="tag">MATLAB</span><span class="tag">GUI</span><span class="tag">Path Planning</span><span class="tag">UAV Simulation</span></div>
 <p style="margin-top:18px"><a href="https://github.com/Sk4639/UAV-Flight-Simulator-MATLAB" target="_blank" rel="noopener">View source code and README →</a></p>
 </article>
-<article class="card">
+<article class="card reveal">
 <h3>Next Project</h3>
 <p>Future work can include aircraft structures, flight-control systems, propulsion analysis, or satellite orbit modelling. Add a project here after implementing and validating it.</p>
 <div class="tags"><span class="tag">Future Work</span><span class="tag">Engineering Analysis</span></div>
 </article>
 </div>
 </section>
-<section id="skills">
+<section id="skills" class="reveal">
 <h2 class="section-title">Technical Skills</h2><p class="sub">Skills and tools relevant to aerospace analysis and engineering software.</p>
 <div class="skills"><span class="skill">MATLAB</span><span class="skill">Python</span><span class="skill">UAV Systems</span><span class="skill">Waypoint Navigation</span><span class="skill">Collision-Avoidance Concepts</span><span class="skill">Aerodynamics</span><span class="skill">Simulation</span><span class="skill">Computational Analysis</span><span class="skill">LabVIEW</span></div>
 </section>
-<section>
+<section class="reveal">
 <h2 class="section-title">Education & Experience</h2><p class="sub">A brief overview; expand this section with verified dates and details from your final CV.</p>
 <div class="grid">
-<article class="card"><h3>B.Tech — Aerospace Engineering</h3><p>Institute of Aeronautical Engineering, Hyderabad</p></article>
-<article class="card"><h3>Industry Exposure</h3><p>BHEL internship: exposure to compressor manufacturing processes and quality control.</p></article>
+<article class="card reveal"><h3>B.Tech — Aerospace Engineering</h3><p>Institute of Aeronautical Engineering, Hyderabad</p></article>
+<article class="card reveal"><h3>Industry Exposure</h3><p>BHEL internship: exposure to compressor manufacturing processes and quality control.</p></article>
 </div>
 </section>
-<section id="contact">
+<section id="contact" class="reveal">
 <h2 class="section-title">Contact</h2><p class="sub">For aerospace engineering opportunities and technical discussions.</p>
 <div class="contact"><a class="btn primary" href="mailto:hamilpur.saikiran@gmail.com">hamilpur.saikiran@gmail.com</a><a class="btn" href="https://github.com/Sk4639" target="_blank" rel="noopener">GitHub Profile ↗</a><a class="btn" href="https://linkedin.com/in/sai-kiran-hamilpur" target="_blank" rel="noopener">LinkedIn ↗</a></div>
 <p class="notice" style="margin-top:22px">Before submitting this portfolio to an employer, verify all personal details and project descriptions, and add genuine screenshots or a demo video of your working simulator.</p>
 </section>
 </div>
 </main>
-<footer><div class="wrap">© Saikiran Hamilpur · Aerospace Engineering Portfolio</div></footer>
+<footer><div class="wrap"><span>© Saikiran Hamilpur · Aerospace Engineering Portfolio</span><span>Designed for flight, built with code ✦</span></div></footer>
+<script>
+// Reveal content as it enters view; the page remains readable if JS is unavailable.
+(function(){
+  const items = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) { items.forEach(el => el.classList.add('is-visible')); return; }
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry, i) => {
+      if (!entry.isIntersecting) return;
+      entry.target.style.transitionDelay = Math.min(i * 70, 280) + 'ms';
+      entry.target.classList.add('is-visible');
+      obs.unobserve(entry.target);
+    });
+  }, {threshold: 0.12, rootMargin: '0px 0px -35px 0px'});
+  items.forEach(el => observer.observe(el));
+})();
+</script>
 </body></html>
